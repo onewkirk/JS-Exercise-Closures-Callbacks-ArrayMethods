@@ -88,8 +88,8 @@ function processLastItem(stringList, callback) {
  * [2] Invoking `processSum` passing `-5`, '-1', and `(num) => num + 1000`,
  * should return 994.
 */
-function processSum(/* CODE HERE */) {
-  /* CODE HERE */
+function processSum(num1, num2, callback) {
+  return callback(num1+num2)
 }
 
 /**
@@ -110,8 +110,8 @@ function processSum(/* CODE HERE */) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(/* CODE HERE */) {
-  /* CODE HERE */
+function processProduct(num1, num2, callback) {
+  return callback(num1*num2)
 }
 
 /**
@@ -132,8 +132,8 @@ function processProduct(/* CODE HERE */) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+function processDuplicateFree(list, callback) {
+  return callback([list]);
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -155,8 +155,10 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * 
  * [2] Invoking `lowerCaseStrings` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
-function lowerCaseStrings(/* code here */) {
-  /* code here */
+function lowerCaseStrings(strings){
+  strings.forEach((string) => {
+    return string.toLowerCase();
+  });
 }
 
 /**
@@ -166,7 +168,7 @@ function lowerCaseStrings(/* code here */) {
  * Implement this function using map().
  * 
  * @param strings an array of strings.
- * @returns an array of equal length to `strings` containing `true` if the corresponding entry in the `strings` is 'apple' and `false` if it is anything else.
+ * @returns an array of equal length to `strings` containing `true` if the corresponding entry in the `strings` is 'apple a'nd `false` if it is anything else.
  * 
  * 
  * Examples of usage of this function:
@@ -174,8 +176,15 @@ function lowerCaseStrings(/* code here */) {
  * 
  * [2] Invoking `isItAnApple` with `['a', 'b', 'c' ]` will return `[ false, false, false ]`.
 */
-function isItAnApple(/* code here */) {
+function isItAnApple(strings) {
   /* code here */
+  const isApple = strings.map((arrItem) => {
+    if (arrItem === 'apple') {
+      return true;
+    } else {
+      return false;
+    }
+});
 }
 
 /**
@@ -194,8 +203,11 @@ function isItAnApple(/* code here */) {
  * 
  * [2] Invoking `removeApple` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
-function removeApple(/* code here */) {
+function removeApple(strings) {
   /* code here */
+  const notAnApple=strings.filter((arrItem)=>{
+    return (arrItem !== 'apple')
+  });
 }
 
 /**
@@ -213,8 +225,11 @@ function removeApple(/* code here */) {
  * 
  * [2] Invoking `stringSmash` with `['a', 'b', 'c' ]` will return `abc`.
 */
-function stringSmash(/* code here */) {
+function stringSmash(strings) {
   /* code here */
+  strings.reduce((accum, arrItem) => {
+    return accum * arrItem;
+  }, 0);
 }
 
 // A local community center is holding a fund raising 5k fun run and has invited
@@ -232,8 +247,11 @@ function stringSmash(/* code here */) {
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
+function getFullNames(runners) {
   /* CODE HERE */
+  const surnameName = runners.map((arrItem) => {
+    return `${runners[last_name]}, ${runners[first_name]}`;
+  });
 }
 
 /**
@@ -248,8 +266,11 @@ function getFullNames(/* CODE HERE */) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
+function firstNamesAllCaps(runners) {
   /* CODE HERE */
+  const allCaps = runners.map((arrItem) => {
+    return runners[first_name].toUpperCase();
+  });
 }
 
 /**
@@ -266,7 +287,7 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
+function getRunnersByTShirtSize(runners, tShirtSize) {
   /* CODE HERE */
 }
 
@@ -296,10 +317,15 @@ function tallyUpDonations(/* CODE HERE */) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * counter2's function utilizes a variable outside it's context, whereas the variable is nested inside counter1's function. 
+ * 
  * 2. Which of the two uses a closure? How can you tell?
+ * 
+ * counter1 defines the count variable inside its own scope. count is not defined inside of counter2. 
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
  *
+ * count1 code is preferable if, you don't want the count variable to be usable outside of the scope of the counterMaker function. counter2  will be more useful whenever you want to reference count outside of the counterMaker function. 
 */
 
 // counter1 code
