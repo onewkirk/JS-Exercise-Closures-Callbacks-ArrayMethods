@@ -159,11 +159,8 @@ function processDuplicateFree(list, callback) {
 */
 function lowerCaseStrings(strings){
   let stringsArray=[];
-  strings.forEach((arrItem) => {
-    arrItem.toLowerCase();
-    stringsArray.push(arrItem);
-  });
-  return stringsArray;
+  strings.forEach((arrItem)=>{arrItem.toLowerCase();stringsArray.push(arrItem)})
+  return stringsArray.length;
 }
 
 /**
@@ -257,10 +254,11 @@ function stringSmash(strings) {
 */
 function getFullNames(runners) {
   /* CODE HERE */
-  const surnameName = runners.map((arrItem) => {
-    return `${runners.last_name}, ${runners.first_name}`;
+  const surnameName = []
+  runners.map((runners.last_name, runners.first_name) => {
+    surnameName.push(`${runners.last_name}, ${runners.first_name}`)
   });
-  return surnameName;
+  return surnameName
 }
 
 /**
@@ -279,7 +277,8 @@ function firstNamesAllCaps(runners) {
   /* CODE HERE */
   const allCaps = []
   runners.map((arrItem) => {
-    return runners.first_name.toUpperCase();
+    runners.first_name.toUpperCase();
+    allCaps.push(arrItem);
   });
   return allCaps;
 }
