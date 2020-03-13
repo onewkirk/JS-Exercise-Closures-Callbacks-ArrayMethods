@@ -234,9 +234,10 @@ function removeApple(strings) {
 */
 function stringSmash(strings) {
   /* code here */
-  strings.reduce((accum, arrItem) => {
-    return accum * arrItem;
-  }, 0);
+  let combinedString = strings.reduce(function(previous, current, i=0,) {
+    return previous + current
+  },)
+  return combinedString;
 }
 
 // A local community center is holding a fund raising 5k fun run and has invited
