@@ -67,7 +67,7 @@ function processLength(list, callback) {
  * should return 'barbar'.
 */
 function processLastItem(stringList, callback) {
-  return callback(stringList[stringList.length-1])
+  return callback(stringList[stringList.length - 1])
 }
 
 /**
@@ -89,7 +89,7 @@ function processLastItem(stringList, callback) {
  * should return 994.
 */
 function processSum(num1, num2, callback) {
-  return callback(num1+num2)
+  return callback(num1 + num2)
 }
 
 /**
@@ -111,7 +111,7 @@ function processSum(num1, num2, callback) {
  * should return 1000.
 */
 function processProduct(num1, num2, callback) {
-  return callback(num1*num2)
+  return callback(num1 * num2)
 }
 
 /**
@@ -133,9 +133,8 @@ function processProduct(num1, num2, callback) {
  * should return 3.
 */
 function processDuplicateFree(list, callback) {
-  let newList=[]
-  newList.push(callback([list]));
-  return newList;
+  return callback(list)
+
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -157,16 +156,18 @@ function processDuplicateFree(list, callback) {
  * 
  * [2] Invoking `lowerCaseStrings` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
-function lowerCaseStrings(strings){
-  let stringsArray=[];
-  strings.forEach((arrItem)=>{arrItem.toLowerCase();stringsArray.push(arrItem)})
-  return stringsArray.length;
+function lowerCaseStrings(strings) {
+  let stringsArray = [];
+  strings.forEach((arrItem) => {
+    stringsArray.push(arrItem.toLowerCase());
+  })
+  return stringsArray;
 }
 
 /**
  * ### Challenge `isItAnApple`
  * 
- * @instructions
+ * @instructionsAAF
  * Implement this function using map().
  * 
  * @param strings an array of strings.
@@ -186,8 +187,8 @@ function isItAnApple(strings) {
     } else {
       return false;
     }
-});
-return isApple;
+  });
+  return isApple;
 }
 
 /**
@@ -208,7 +209,7 @@ return isApple;
 */
 function removeApple(strings) {
   /* code here */
-  const notAnApple=strings.filter((arrItem)=>{
+  const notAnApple = strings.filter((arrItem) => {
     return (arrItem !== 'apple')
   });
   return notAnApple;
@@ -231,9 +232,9 @@ function removeApple(strings) {
 */
 function stringSmash(strings) {
   /* code here */
-  let combinedString = strings.reduce(function(previous, current, i=0,) {
+  let combinedString = strings.reduce(function (previous, current, i = 0, ) {
     return previous + current
-  },)
+  })
   return combinedString;
 }
 
@@ -255,7 +256,7 @@ function stringSmash(strings) {
 function getFullNames(runners) {
   /* CODE HERE */
   const surnameName = []
-  runners.map((runners.last_name, runners.first_name) => {
+  runners.map((runners) => {
     surnameName.push(`${runners.last_name}, ${runners.first_name}`)
   });
   return surnameName
@@ -274,13 +275,9 @@ function getFullNames(runners) {
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
 function firstNamesAllCaps(runners) {
-  /* CODE HERE */
-  const allCaps = []
-  runners.map((arrItem) => {
-    runners.first_name.toUpperCase();
-    allCaps.push(arrItem);
-  });
-  return allCaps;
+  return runners.map((newMap) => {
+    return newMap.first_name.toUpperCase();
+  })
 }
 
 /**
@@ -394,7 +391,7 @@ if (typeof exports !== 'undefined') {
   if (processSum) { module.exports.processSum = processSum }
   if (processProduct) { module.exports.processProduct = processProduct }
   if (processDuplicateFree) { module.exports.processDuplicateFree = processDuplicateFree }
-  if (lowerCaseStrings ) { module.exports.lowerCaseStrings = lowerCaseStrings}
+  if (lowerCaseStrings) { module.exports.lowerCaseStrings = lowerCaseStrings }
   if (isItAnApple) { module.exports.isItAnApple = isItAnApple }
   if (removeApple) { module.exports.removeApple = removeApple }
   if (stringSmash) { module.exports.stringSmash = stringSmash }
