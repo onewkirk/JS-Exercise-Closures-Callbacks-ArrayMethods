@@ -133,7 +133,9 @@ function processProduct(num1, num2, callback) {
  * should return 3.
 */
 function processDuplicateFree(list, callback) {
-  return callback([list]);
+  let newList=[]
+  newList.push(callback([list]));
+  return newList;
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -156,9 +158,12 @@ function processDuplicateFree(list, callback) {
  * [2] Invoking `lowerCaseStrings` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
 function lowerCaseStrings(strings){
-  strings.forEach((string) => {
-    return string.toLowerCase();
+  let stringsArray=[];
+  strings.forEach((arrItem) => {
+    arrItem.toLowerCase();
+    stringsArray.push(arrItem);
   });
+  return stringsArray;
 }
 
 /**
@@ -179,12 +184,13 @@ function lowerCaseStrings(strings){
 function isItAnApple(strings) {
   /* code here */
   const isApple = strings.map((arrItem) => {
-    if (arrItem === 'apple') {
+    if (arrItem == 'apple') {
       return true;
     } else {
       return false;
     }
 });
+return isApple;
 }
 
 /**
@@ -208,6 +214,7 @@ function removeApple(strings) {
   const notAnApple=strings.filter((arrItem)=>{
     return (arrItem !== 'apple')
   });
+  return notAnApple;
 }
 
 /**
@@ -250,8 +257,9 @@ function stringSmash(strings) {
 function getFullNames(runners) {
   /* CODE HERE */
   const surnameName = runners.map((arrItem) => {
-    return `${runners[last_name]}, ${runners[first_name]}`;
+    return `${runners.last_name}, ${runners.first_name}`;
   });
+  return surnameName;
 }
 
 /**
@@ -268,9 +276,11 @@ function getFullNames(runners) {
 */
 function firstNamesAllCaps(runners) {
   /* CODE HERE */
-  const allCaps = runners.map((arrItem) => {
-    return runners[first_name].toUpperCase();
+  const allCaps = []
+  runners.map((arrItem) => {
+    return runners.first_name.toUpperCase();
   });
+  return allCaps;
 }
 
 /**
