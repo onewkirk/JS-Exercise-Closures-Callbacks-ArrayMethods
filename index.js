@@ -48,8 +48,8 @@ function processFirstItem(stringList, callback) {
  * [2] Invoking `processLength` passing `[]` and `(num) => "There are " + num`,
  * should return "There are 0".
 */
-function processLength(/* CODE HERE */) {
-  /* CODE HERE */
+function processLength(list, callback) {
+  return callback(list.length)
 }
 
 /**
@@ -66,8 +66,8 @@ function processLength(/* CODE HERE */) {
  * Invoking `processLastItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'barbar'.
 */
-function processLastItem(/* CODE HERE */) {
-  /* CODE HERE */
+function processLastItem(stringList, callback) {
+  return callback(stringList[stringList.length - 1])
 }
 
 /**
@@ -88,8 +88,8 @@ function processLastItem(/* CODE HERE */) {
  * [2] Invoking `processSum` passing `-5`, '-1', and `(num) => num + 1000`,
  * should return 994.
 */
-function processSum(/* CODE HERE */) {
-  /* CODE HERE */
+function processSum(num1, num2, callback) {
+  return callback(num1 + num2)
 }
 
 /**
@@ -110,8 +110,8 @@ function processSum(/* CODE HERE */) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(/* CODE HERE */) {
-  /* CODE HERE */
+function processProduct(num1, num2, callback) {
+  return callback(num1 * num2)
 }
 
 /**
@@ -132,8 +132,14 @@ function processProduct(/* CODE HERE */) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+function processDuplicateFree(list, callback) {
+  let uniqueNumber = []
+  for (let i = 0; i < list.length; i++) {
+    if (list[i + 1] !== list[i]) {
+      uniqueNumber.push(list[i])
+    }
+  }
+  return uniqueNumber;
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -155,18 +161,22 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * 
  * [2] Invoking `lowerCaseStrings` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
-function lowerCaseStrings(/* code here */) {
-  /* code here */
+function lowerCaseStrings(strings) {
+  let stringsArray = [];
+  strings.forEach((arrItem) => {
+    stringsArray.push(arrItem.toLowerCase());
+  })
+  return stringsArray;
 }
 
 /**
  * ### Challenge `isItAnApple`
  * 
- * @instructions
+ * @instructionsAAF
  * Implement this function using map().
  * 
  * @param strings an array of strings.
- * @returns an array of equal length to `strings` containing `true` if the corresponding entry in the `strings` is 'apple' and `false` if it is anything else.
+ * @returns an array of equal length to `strings` containing `true` if the corresponding entry in the `strings` is 'apple a'nd `false` if it is anything else.
  * 
  * 
  * Examples of usage of this function:
@@ -174,8 +184,16 @@ function lowerCaseStrings(/* code here */) {
  * 
  * [2] Invoking `isItAnApple` with `['a', 'b', 'c' ]` will return `[ false, false, false ]`.
 */
-function isItAnApple(/* code here */) {
+function isItAnApple(strings) {
   /* code here */
+  const isApple = strings.map((arrItem) => {
+    if (arrItem == 'apple') {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  return isApple;
 }
 
 /**
@@ -194,8 +212,12 @@ function isItAnApple(/* code here */) {
  * 
  * [2] Invoking `removeApple` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
-function removeApple(/* code here */) {
+function removeApple(strings) {
   /* code here */
+  const notAnApple = strings.filter((arrItem) => {
+    return (arrItem !== 'apple')
+  });
+  return notAnApple;
 }
 
 /**
@@ -213,8 +235,12 @@ function removeApple(/* code here */) {
  * 
  * [2] Invoking `stringSmash` with `['a', 'b', 'c' ]` will return `abc`.
 */
-function stringSmash(/* code here */) {
+function stringSmash(strings) {
   /* code here */
+  let combinedString = strings.reduce(function (previous, current, i = 0, ) {
+    return previous + current
+  })
+  return combinedString;
 }
 
 // A local community center is holding a fund raising 5k fun run and has invited
@@ -232,8 +258,13 @@ function stringSmash(/* code here */) {
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
+function getFullNames(runners) {
   /* CODE HERE */
+  const surnameName = []
+  runners.map((runners) => {
+    surnameName.push(`${runners.last_name}, ${runners.first_name}`)
+  });
+  return surnameName
 }
 
 /**
@@ -248,8 +279,10 @@ function getFullNames(/* CODE HERE */) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
-  /* CODE HERE */
+function firstNamesAllCaps(runners) {
+  return runners.map((newMap) => {
+    return newMap.first_name.toUpperCase();
+  })
 }
 
 /**
@@ -266,7 +299,7 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
+function getRunnersByTShirtSize(runners, tShirtSize) {
   /* CODE HERE */
 }
 
@@ -296,10 +329,15 @@ function tallyUpDonations(/* CODE HERE */) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * counter2's function utilizes a variable outside it's context, whereas the variable is nested inside counter1's function. 
+ * 
  * 2. Which of the two uses a closure? How can you tell?
+ * 
+ * counter1 defines the count variable inside its own scope. count is not defined inside of counter2. 
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
  *
+ * count1 code is preferable if, you don't want the count variable to be usable outside of the scope of the counterMaker function. counter2  will be more useful whenever you want to reference count outside of the counterMaker function. 
 */
 
 // counter1 code
@@ -358,7 +396,7 @@ if (typeof exports !== 'undefined') {
   if (processSum) { module.exports.processSum = processSum }
   if (processProduct) { module.exports.processProduct = processProduct }
   if (processDuplicateFree) { module.exports.processDuplicateFree = processDuplicateFree }
-  if (lowerCaseStrings ) { module.exports.lowerCaseStrings = lowerCaseStrings}
+  if (lowerCaseStrings) { module.exports.lowerCaseStrings = lowerCaseStrings }
   if (isItAnApple) { module.exports.isItAnApple = isItAnApple }
   if (removeApple) { module.exports.removeApple = removeApple }
   if (stringSmash) { module.exports.stringSmash = stringSmash }
