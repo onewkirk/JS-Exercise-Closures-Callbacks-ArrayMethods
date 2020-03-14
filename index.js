@@ -133,8 +133,13 @@ function processProduct(num1, num2, callback) {
  * should return 3.
 */
 function processDuplicateFree(list, callback) {
-  return callback(list)
-
+  let uniqueNumber = []
+  for (let i = 0; i < list.length; i++) {
+    if (list[i + 1] !== list[i]) {
+      uniqueNumber.push(list[i])
+    }
+  }
+  return uniqueNumber;
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
